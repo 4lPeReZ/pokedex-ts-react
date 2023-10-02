@@ -1,8 +1,10 @@
-export const PokeDetail = () => {
+import { useParams } from "react-router-dom";
+import { PokemonDetail } from "../../Components/PokemonDetail";
+import { usePokemon } from "../../Hooks/usePokemon";
 
-    return (
-      <div>
-          <h1>PokeDetail</h1>
-      </div>
-    );
-  };
+export const PokeDetail = () => {
+  const { pokeId } = useParams();
+  const { pokemon } = usePokemon("", pokeId);
+
+  return <PokemonDetail pokemon={pokemon!} />;
+};
