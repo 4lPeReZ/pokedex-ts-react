@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { PokeballIconSmall } from "../../Assets/pokeball";
-import { PokemonList } from "../../Components/PokemonList";
-import styles from "./styles.module.scss";
-import { PokemonContext } from "../../Context/pokemonContext";
+import { Filters } from "../../Components/Filters";
 import { Pagination } from "../../Components/Pagination";
+import { PokemonList } from "../../Components/PokemonList";
+import { PokemonContext } from "../../Context/pokemonContext";
 import { usePagination } from "../../Hooks/usePagination";
 
+import styles from "./styles.module.scss";
 
 export const Home = () => {
   const { pokemonsFiltered } = useContext(PokemonContext);
@@ -15,24 +16,25 @@ export const Home = () => {
 
   return (
     <div className={styles.home}>
-        <header>
+      <header>
         <div onClick={backToHome}>
           <PokeballIconSmall />
           <span>Pokédex</span>
         </div>
-        </header>
-        <PokemonList
-          page={page}
-          perPage={perPage}
-          pokemonsUrls={pokemonsFiltered}
-        />
-        <Pagination
-          page={page}
-          perPage={perPage}
-          nextPage={nextPage}
-          previousPage={previousPage}
-          maxItems={pokemonsFiltered?.length!}
-        />
+      </header>
+      <Filters />
+      <PokemonList
+        page={page}
+        perPage={perPage}
+        pokemonsUrls={pokemonsFiltered}
+      />
+      <Pagination
+        page={page}
+        perPage={perPage}
+        nextPage={nextPage}
+        previousPage={previousPage}
+        maxItems={pokemonsFiltered?.length!}
+      />
     </div>
   );
 };
