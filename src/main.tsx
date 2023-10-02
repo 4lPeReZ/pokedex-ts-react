@@ -7,7 +7,7 @@ import PokemonProvider from './Context/pokemonContext';
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '/{pokedex-ts-react}',
     element: <Home />,
   },
   {
